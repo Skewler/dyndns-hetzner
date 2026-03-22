@@ -1,0 +1,26 @@
+[Unit]
+Description=Hetzner DynDNS Updater
+Documentation=https://dns.hetzner.com/api-docs
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/dyndns-hetzner.sh
+Restart=on-failure
+RestartSec=30
+
+# Sicherheitshärtung
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/log
+NoNewPrivileges=true
+PrivateTmp=true
+
+# Logging-Fallback über journald
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=dyndns-hetzner
+
+[Install]
+WantedBy=multi-user.target
