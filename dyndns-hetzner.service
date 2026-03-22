@@ -1,6 +1,6 @@
 [Unit]
 Description=Hetzner DynDNS Updater
-Documentation=https://dns.hetzner.com/api-docs
+Documentation=https://docs.hetzner.cloud/reference/cloud
 After=network-online.target
 Wants=network-online.target
 
